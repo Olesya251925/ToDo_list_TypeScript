@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './style_title_about_add_button/stylesMain.scss';
+import './presentation/addition_task/addition_task.scss';
+import './presentation/create_task/create_tasks.scss';
+import './App.css';
+
+import CreateTask from './presentation/create_task/create_task.tsx';
+import ShareModal from './presentation/share/share_task';
+import DeleteModal from './presentation/delete_button/delete';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isShareModalOpen, setShareModalOpen] = useState(false);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <div className="container">
+        <CreateTask />
+        {isShareModalOpen && <ShareModal />}
+        {isDeleteModalOpen && <DeleteModal />}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
