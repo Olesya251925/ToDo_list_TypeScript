@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'; // Updated import
 import { reorderTasks } from "../../features/taskSlice";
 import AdditionTask from '../addition_task/addition_task';
 import { Task } from '../types/task';
@@ -11,6 +11,7 @@ interface TaskListProps {
     onShareTask: (task: Task) => void;
     onToggleExpand: (taskId: string) => void;
 }
+
 interface RootState {
     tasks: {
         tasks: Task[];
@@ -81,4 +82,3 @@ const TaskList: React.FC<TaskListProps> = ({ onDeleteTask, onEditTask, onShareTa
 };
 
 export default TaskList;
-
