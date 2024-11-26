@@ -5,6 +5,7 @@ import shareIcon from '../../icons/sharee.png';
 import editIcon from '../../icons/edit.png';
 import infoIcon from '../../icons/info.png';
 import deleteIcon from '../../icons/cross.png';
+import pinIcon from '../../icons/pin.png'; // Добавьте иконку закрепления
 import { openShareModal, openDeleteModal } from "../../features/taskSlice";
 import { Task } from '../types/task';
 
@@ -74,12 +75,16 @@ const AdditionTask: React.FC<AdditionTaskProps> = ({ task, onToggleExpand, onEdi
                 </div>
             )}
 
-            <button className="action-button delete-button" onClick={handleDeleteClick}>
-                <img src={deleteIcon} alt="Delete" className="action-icon" />
-            </button>
+            <div className="action-buttons">
+                <button className="action-button pin-button">
+                    <img src={pinIcon} alt="Pin" className="action-icon" />
+                </button>
+                <button className="action-button delete-button" onClick={handleDeleteClick}>
+                    <img src={deleteIcon} alt="Delete" className="action-icon" />
+                </button>
+            </div>
         </div>
     );
 };
 
 export default AdditionTask;
-
