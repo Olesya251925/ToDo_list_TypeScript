@@ -54,10 +54,13 @@ const taskSlice = createSlice({
             localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
         reorderTasks: (state, action: PayloadAction<{ sourceIndex: number; destinationIndex: number }>) => {
-            const [movedTask] = state.tasks.splice(action.payload.sourceIndex, 1);
-            state.tasks.splice(action.payload.destinationIndex, 0, movedTask);
+            const tasks = [...state.tasks];
+            const [movedTask] = tasks.splice(action.payload.sourceIndex, 1);
+            tasks.splice(action.payload.destinationIndex, 0, movedTask);
+            state.tasks = tasks;
             localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
+
         openShareModal: (state, action: PayloadAction<Task>) => {
             state.isShareModalOpen = true;
             state.sharedTask = action.payload;

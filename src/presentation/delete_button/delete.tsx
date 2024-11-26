@@ -15,7 +15,13 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ taskToDelete, onConfirm, onCa
 
     const handleConfirm = () => {
         dispatch(deleteTask(taskToDelete.id));
+        dispatch(closeDeleteModal());
         onConfirm();
+    };
+
+    const handleCancel = () => {
+        dispatch(closeDeleteModal());
+        onCancel();
     };
 
     return (
@@ -27,7 +33,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ taskToDelete, onConfirm, onCa
                 </div>
                 <div className="modal-buttons-button-delete">
                     <button className="button-button-delete" onClick={handleConfirm}>Yes</button>
-                    <button className="button-button-delete" onClick={onCancel}>No</button>
+                    <button className="button-button-delete" onClick={handleCancel}>No</button>
                 </div>
             </div>
         </div>
@@ -35,4 +41,3 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ taskToDelete, onConfirm, onCa
 };
 
 export default DeleteModal;
-

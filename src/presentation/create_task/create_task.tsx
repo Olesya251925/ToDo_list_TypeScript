@@ -34,9 +34,8 @@ const CreateTask: React.FC = () => {
         const newTask: Task = { id: taskId, title, about, description: '', completed: false };
 
         dispatch(addTask(newTask));
-        const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-        localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
     };
+
 
     const handleDeleteClick = (taskId: string) => {
         const taskToDelete: Task = { id: taskId, title: '', about: '', description: '', completed: false };
