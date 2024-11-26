@@ -5,9 +5,9 @@ import './presentation/addition_task/addition_task.scss';
 import "./presentation/create_task/create_tasks.scss";
 import './App.css';
 
-import CreateTask from './presentation/create_task/create_task.jsx';
-import ShareModal from './presentation/share/share_task.jsx';
-import DeleteModal from './presentation/delete_button/delete.jsx';
+import CreateTask from './presentation/create_task/create_task';
+import ShareModal from './presentation/share/share_task';
+import DeleteModal from './presentation/delete_button/delete';
 
 function App() {
   const { isShareModalOpen, isDeleteModalOpen } = useSelector(state => state.tasks);
