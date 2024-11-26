@@ -34,19 +34,19 @@ const ShareModal: React.FC<ShareModalProps> = ({ task, onClose }) => {
             <div className="modal-share" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-share-content">
                     <button className="share-button" onClick={handleCopyClick}>
-                        <img src="/icons/copy.png" alt="Copy" />
+                        <img src="src/icons/copy.png" alt="Copy" />
                     </button>
                     <button className="share-button">
-                        <img src="/icons/vk.png" alt="Share VK" />
+                        <img src="src/icons/vk.png" alt="Share VK" />
                     </button>
                     <button className="share-button">
-                        <img src="/icons/telegram.png" alt="Share Telegram" />
+                        <img src="src/icons/telegram.png" alt="Share Telegram" />
                     </button>
                     <button className="share-button">
-                        <img src="/icons/whatsapp.png" alt="Share WhatsApp" />
+                        <img src="src/icons/whatsapp.png" alt="Share WhatsApp" />
                     </button>
                     <button className="share-button">
-                        <img src="/icons/facebook.png" alt="Share Facebook" />
+                        <img src="src/icons/facebook.png" alt="Share Facebook" />
                     </button>
                 </div>
             </div>
