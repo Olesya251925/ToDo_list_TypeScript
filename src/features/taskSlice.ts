@@ -107,7 +107,7 @@ const taskSlice = createSlice({
                     localStorage.setItem('tasks', JSON.stringify(state.tasks));
                     state.errorMessage = '';
                 } else {
-                    state.errorMessage = 'Извините, всего можно закрепить 3 задачи';
+                    state.errorMessage = 'Sorry, you can pin 3 tasks in total';
                     localStorage.setItem('tasks', JSON.stringify(state.tasks));
                     return;
                 }
