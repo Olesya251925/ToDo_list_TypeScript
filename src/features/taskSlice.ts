@@ -5,6 +5,7 @@ interface Task {
     title: string;
     description: string;
     completed: boolean;
+    isPinned: boolean;
 }
 
 interface TaskState {
@@ -59,6 +60,12 @@ const taskSlice = createSlice({
             tasks.splice(action.payload.destinationIndex, 0, movedTask);
             state.tasks = tasks;
             localStorage.setItem('tasks', JSON.stringify(state.tasks));
+
+            state.tasks = [
+                ...state.tasks.filter((task) => task.isPinned),
+                ...state.tasks.filter((task) => !task.isPinned),
+            ];
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
 
         openShareModal: (state, action: PayloadAction<Task>) => {
@@ -80,6 +87,38 @@ const taskSlice = createSlice({
         setErrorMessage: (state, action: PayloadAction<string>) => {
             state.errorMessage = action.payload;
         },
+        clearErrorMessage: (state) => {
+            state.errorMessage = '';
+        },
+        togglePinTask: (state, action: PayloadAction<string>) => {
+            const task = state.tasks.find((task) => task.id === action.payload);
+
+            if (task) {
+                const pinnedTasksCount = state.tasks.filter((task) => task.isPinned).length;
+                if (task.isPinned) {
+                    task.isPinned = false;
+                } else if (pinnedTasksCount < 3) {
+                    task.isPinned = true;
+                    state.tasks = [
+                        task,
+                        ...state.tasks.filter((t) => t.isPinned && t.id !== task.id),
+                        ...state.tasks.filter((t) => !t.isPinned),
+                    ];
+                    localStorage.setItem('tasks', JSON.stringify(state.tasks));
+                    state.errorMessage = '';
+                } else {
+                    state.errorMessage = 'Извините, всего можно закрепить 3 задачи';
+                    localStorage.setItem('tasks', JSON.stringify(state.tasks));
+                    return;
+                }
+
+                state.tasks = [
+                    ...state.tasks.filter((t) => t.isPinned),
+                    ...state.tasks.filter((t) => !t.isPinned),
+                ];
+                localStorage.setItem('tasks', JSON.stringify(state.tasks));
+            }
+        },
     },
 });
 
@@ -94,6 +133,8 @@ export const {
     openDeleteModal,
     closeDeleteModal,
     setErrorMessage,
+    togglePinTask,
+    clearErrorMessage,
 } = taskSlice.actions;
 
 export default taskSlice.reducer;

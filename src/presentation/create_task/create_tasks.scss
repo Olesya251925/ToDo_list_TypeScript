@@ -109,3 +109,69 @@ body {
         }
     }
 }
+
+.error-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #ffe6e6;
+    border: 1px solid #ff4d4f;
+    border-radius: 5px;
+    color: #d9363e;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    max-width: 600px;
+    position: relative;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: #ff4d4f;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #d9363e;
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.task-message {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+}
+
+.task-line {
+    width: 50px;
+    border: 1px solid #ccc;
+    margin: 10px auto;
+}

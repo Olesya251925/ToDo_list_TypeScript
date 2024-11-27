@@ -31,17 +31,32 @@ const CreateTask: React.FC = () => {
         }
 
         const taskId = (Date.now() + Math.random()).toString();
-        const newTask: Task = { id: taskId, title, about, description: '', completed: false };
+        const newTask: Task = {
+            id: taskId,
+            title,
+            about,
+            description: '',
+            completed: false,
+            isPinned: false
+        };
 
         dispatch(addTask(newTask));
+        setErrorMessage('');
     };
 
-
     const handleDeleteClick = (taskId: string) => {
-        const taskToDelete: Task = { id: taskId, title: '', about: '', description: '', completed: false };
+        const taskToDelete: Task = {
+            id: taskId,
+            title: '',
+            about: '',
+            description: '',
+            completed: false,
+            isPinned: false
+        };
         setTaskToDelete(taskToDelete);
         setIsDeleteModalOpen(true);
     };
+
 
     const handleConfirmDelete = () => {
         if (taskToDelete) {
@@ -94,7 +109,12 @@ const CreateTask: React.FC = () => {
     return (
         <div className="container">
             <TaskInputForm onAddClick={handleAddClick} />
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            {errorMessage && (
+                <div className="error-message">
+                    <span>{errorMessage}</span>
+                    <button className="close-button" onClick={() => setErrorMessage('')}>×</button>
+                </div>
+            )}
             <TaskList
                 onDeleteTask={handleDeleteClick}
                 onEditTask={handleEditTask}
@@ -129,4 +149,3 @@ const CreateTask: React.FC = () => {
 };
 
 export default CreateTask;
-

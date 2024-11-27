@@ -4,5 +4,6 @@ export interface Task {
     about: string;
     description: string;
     completed: boolean;
+    isPinned: boolean;
 }
 

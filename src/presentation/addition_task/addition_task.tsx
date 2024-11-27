@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import './addition_task.scss';
 import shareIcon from '../../icons/sharee.png';
 import editIcon from '../../icons/edit.png';
 import infoIcon from '../../icons/info.png';
 import deleteIcon from '../../icons/cross.png';
-import pinIcon from '../../icons/pin.png'; // Добавьте иконку закрепления
-import { openShareModal, openDeleteModal } from "../../features/taskSlice";
+import pinIcon from '../../icons/pin.png';
+
 import { Task } from '../types/task';
+import { useDispatch } from 'react-redux';
+import { togglePinTask } from '../../features/taskSlice';
 
 interface AdditionTaskProps {
     task: Task;
@@ -36,11 +37,15 @@ const AdditionTask: React.FC<AdditionTaskProps> = ({ task, onToggleExpand, onEdi
     };
 
     const handleInfoClick = () => {
-        // For handling the "Info" button
+
     };
 
     const handleDeleteClick = () => {
         onDelete();
+    };
+
+    const handlePinClick = () => {
+        dispatch(togglePinTask(task.id));
     };
 
     return (
@@ -76,7 +81,10 @@ const AdditionTask: React.FC<AdditionTaskProps> = ({ task, onToggleExpand, onEdi
             )}
 
             <div className="action-buttons">
-                <button className="action-button pin-button">
+                <button
+                    className={`action-button pin-button ${task.isPinned ? 'pinned' : ''}`} // Стиль для закрепленной кнопки
+                    onClick={handlePinClick}
+                >
                     <img src={pinIcon} alt="Pin" className="action-icon" />
                 </button>
                 <button className="action-button delete-button" onClick={handleDeleteClick}>
