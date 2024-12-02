@@ -6,7 +6,7 @@ import {
   Draggable,
   DropResult,
 } from "@hello-pangea/dnd";
-import { reorderTasks, clearErrorMessage } from "../../features/taskSlice";
+import { reorderTasks, clearErrorMessage } from "../../store/slices/taskSlice";
 import AdditionTask from "../addition_task/addition_task";
 import { Task } from "../types/task";
 

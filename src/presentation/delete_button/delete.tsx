@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import "./delete.scss";
-import { deleteTask, closeDeleteModal } from "../../features/taskSlice";
+import { deleteTask, closeDeleteModal } from "../../store/slices/taskSlice";
 import { Task } from "../types/task";
 
 interface DeleteModalProps {

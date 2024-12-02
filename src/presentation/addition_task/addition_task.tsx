@@ -8,7 +8,7 @@ import pinIcon from "../../icons/pin.png";
 
 import { Task } from "../types/task";
 import { useDispatch } from "react-redux";
-import { togglePinTask } from "../../features/taskSlice";
+import { togglePinTask } from "../../store/slices/taskSlice";
 
 interface AdditionTaskProps {
   task: Task;

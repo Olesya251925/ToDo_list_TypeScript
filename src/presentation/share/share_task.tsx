@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import "./share_task.scss";
-import { closeShareModal } from "../../features/taskSlice";
+import { closeShareModal } from "../../store/slices/taskSlice";
 import { Task } from "../types/task";
 
 interface ShareModalProps {

@@ -5,7 +5,7 @@ import {
   loadTasks,
   deleteTask,
   editTask,
-} from "../../features/taskSlice";
+} from "../../store/slices/taskSlice";
 import TaskInputForm from "./task_input_form";
 import TaskList from "./task_list";
 import DeleteModal from "../delete_button/delete";
